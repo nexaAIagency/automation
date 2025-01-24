@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nexa AI</title>
+
+    <!-- Poppins font link -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Boxicons link -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+    body {
+        font-family: "Poppins";
+    }
+
+    .kanit-semibold-italic {
+        font-family: "Kanit", serif;
+        font-weight: 600;
+        /* font-style: italic; */
+    }
+
+    .kanit-lessbold-italic {
+        font-family: "Kanit", serif;
+        font-weight: 500;
+        /* font-style: italic; */
+    }
+
+    .oswald {
+        font-family: "Oswald", sans-serif;
+    }
+
+    /* For Webkit-based browsers (Chrome, Safari, Edge) */
+    ::-webkit-scrollbar {
+        width: 20px;
+        /* Adjust width as needed */
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #2c2c2c;
+        /* Dark background for the track */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #555;
+        /* Dark thumb color */
+        border-radius: 10px;
+        /* Optional: rounded edges for the thumb */
+        border: 3px solid #2c2c2c;
+        /* Optional: space around the thumb */
+    }
+
+    .card:hover {
+        .cardheading {
+            color: black;
+        }
+
+        .cardpara {
+            color: rgb(67, 67, 67);
+            /* font-weight: 600; */
+        }
+
+        .cardimage {
+            filter: invert(100%);
+        }
+    }
+
+    .cardheading,
+    .cardpara,
+    .cardimage {
+        transition: all 0.8s ease;
+    }
+    .nav-button {
+    position: relative;
+    text-align: center;
+    color: inherit;
+    transition: color 0.3s ease-in-out; /* Smooth transition for text color */
+}
+
+.nav-button::after {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* Button ke niche spacing adjust */
+    left: 50%;
+    transform: translateX(-50%); /* Perfect centering */
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Hover par line ka width adjust karein */
+.nav-button:hover::after,
+.nav-button:focus::after {
+    width: var(--line-width, 100%);
+}
+
+.nav-button:focus {
+    outline: none; /* Focus state mein outline remove karte hain */
+}
+
+.nav-button.active {
+    color: white; /* Text color white on active */
+}
+
+.nav-button.active::after {
+    width: var(--line-width, 100%);
+}
+
+/* Example: Specific width for individual buttons */
+.nav-button[data-target="home"] {
+    --line-width: 65%; /* Home button ki line width */
+}
+
+.nav-button[data-target="services"] {
+    --line-width: 75%; /* Services button ki line width */
+}
+
+.nav-button[data-target="aboutus"] {
+    --line-width: 75%; /* About Us button ki line width */
+}
+
+    /* get started button ka animation */
+
+    .getStartedBtn {
+        display: inline-block;
+        padding: 16px 32px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        border: 2px solid #e5e7eb;
+        border-radius: 0.5rem;
+        background: linear-gradient(to left, #06b6d4, #1e3a8a);
+        /* Adjusted gradient direction */
+        background-size: 200%;
+        /* Increased size for better movement */
+        background-position: left center;
+        /* Initial position to the left */
+        transition: background-position 0.5s ease;
+        /* Smooth transition */
+        position: relative;
+        overflow: hidden;
+    }
+
+    .getStartedBtn:hover {
+        background-position: center center;
+        /* Moves to the right on hover */
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        position: relative;
+        /* Make sure positioning is relative */
+    }
+
+    body::before {
+        content: '';
+        /* Empty content for the overlay */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('bgFinal.png');
+        /* Use the background image */
+        background-repeat: repeat-y;
+        background-size: 100% auto;
+        opacity: 0.3;
+        /* Adjust opacity as needed */
+        z-index: -1;
+        /* Place it behind the content */
+    }
+</style>
+
+<style>
+    /* Hide scrollbar but keep scrolling enabled */
+    .videoList::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari */
+    }
+
+    .videoList {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    /* Disabled button styles */
+    button:disabled {
+        opacity: 0.5;
+        /* Faded effect for disabled buttons */
+        cursor: default;
+        /* Normal pointer cursor for disabled buttons */
+    }
+
+    button i {
+        font-size: 2rem;
+        /* Arrow icon size */
+    }
+
+    /* Custom Dark Scrollbar */
+/* Dark-Themed Scrollbar */
+.videoList {
+    scrollbar-width: auto; /* Firefox fallback, custom width ke liye "auto" rakho */
+    scrollbar-color: #545454 #242424; /* Firefox thumb and track color */
+}
+
+.videoList::-webkit-scrollbar {
+    width: 12px; /* Vertical scrollbar width */
+    height: 12px; /* Horizontal scrollbar height */
+}
+
+.videoList::-webkit-scrollbar-thumb {
+    background: #545454; /* Thumb color */
+    border-radius: 6px; /* Rounded corners */
+}
+
+.videoList::-webkit-scrollbar-track {
+    background: #242424; /* Track color */
+    border-radius: 6px; /* Optional: Rounded track corners */
+    margin-top: 5px; /* Adds spacing at the top */
+    margin-bottom: 5px; /* Adds spacing at the bottom */
+}
+
+
+    
+</style>
+
+<body class="bg-[#0b121c] flex flex-col justify-center items-center">
+    <header
+        class="w-[100%] bg-black flex justify-between items-center mx-auto pb-8 max-xl:pb-4 max-xl:px-4 px-12 max-[400px]:px-0 sticky top-0 z-50 max-[800px]:flex-col">
+
+        <!-- <div class=" sticky top-0"> -->
+        <div class="logodiv flex items-center">
+            <img class="h-[120px] max-xl:h-[100px] max-[800px]:hidden" src="nexaAilogo.png" alt="">
+            <img class="min-[800px]:hidden h-[60px] my-4 mx-5 max-[500px]:mx-3 max-sm:h-[60px] max-[500px]:h-[50px]" src="newLogoResponsive.png" alt="">
+            <div class="flex-col mt-8">
+
+                <h3
+                    class="heading text-xl max-xl:text-lg max-[800px]:hidden tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 kanit-semibold-italic">
+                    AI AUTOMATION
+                </h3>
+                <h3
+                    class="heading text-xl max-xl:text-lg max-[800px]:hidden tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 kanit-semibold-italic">
+                    AGENCY
+                </h3>
+                <h3
+                    class="heading text-lg mb-8 min-[800px]:hidden  tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 kanit-semibold-italic">
+                    AI AUTOMATION AGENCY
+                </h3>
+
+
+            </div>
+
+            <!-- <h3>Nexa AI</h3> -->
+        </div>
+        <div class="buttondiv text-white flex items-center flex-wrap justify-center gap-y-2">
+            <button type="button" data-target="home"
+                class="nav-button heading text-2xl max-xl:text-xl max-sm:text-lg max-[500px]:text-md max-sm:px-2 tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 kanit-lessbold-italic px-6 transition-all hover:bg-gradient-to-l hover:from-cyan-500 hover:to-blue-500">
+                Home
+            </button>
+
+            <button type="button" data-target="services"
+                class="nav-button heading text-2xl max-xl:text-xl max-sm:text-lg max-[500px]:text-md max-sm:px-2 tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 kanit-lessbold-italic px-6 transition-all hover:bg-gradient-to-l hover:from-cyan-500 hover:to-blue-500">
+                Services
+            </button>
+
+
+
+            <button type="button" data-target="aboutus"
+                class="nav-button heading text-2xl max-xl:text-xl max-sm:text-lg max-[500px]:text-md max-sm:px-2 tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 kanit-lessbold-italic px-6 transition-all hover:bg-gradient-to-l hover:from-cyan-500 hover:to-blue-500 ">
+                About Us
+            </button>
+        </div>
+
+        <!-- </div> -->
+
+    </header>
+
+    <!-- video ka kaam ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; -->
+    <main id="home" class="home w-[100%] flex justify-center items-center mx-auto relative">
+        <div class="main1 text-center items-center flex-col flex justify-center w-[100%] max-w-[1600px] px-12 max-md:px-4 mt-8">
+            <!-- Heading -->
+            <h1
+                class="text-4xl max-xl:text-2xl font-extrabold leading-none tracking-wide text-white mb-4 max-[500px]:mb-4 max-sm:text-xl">
+                SMART SOLUTIONS, SMARTER BUSINESS
+            </h1>
+    
+            <p class="text-xl max-xl:text-lg max-md:text-sm font-normal text-gray-300 mb-4 max-[500px]:mb-4 tracking-wider leading-10">
+                FROM AI AUTOMATIONS TO COPYWRITING, WE EMPOWER A BUSINESS TO SCALE EFFICIENTLY WITH CUTTING-EDGE AUTOMATIONS
+                AND TAILORED SOLUTIONS.
+            </p>
+    
+            <!-- Video Container -->
+            <div class="video-container relative w-full max-w-[888px] overflow-hidden bg-black">
+                <!-- Video Element -->
+                <video
+                poster="videoImage.png"
+                    id="video"
+                    src="finalWoOutro.mp4"
+                    class="w-full h-full object-contain"
+                    muted="false"
+                    loop
+                    preload="metadata"
+                ></video>
+            
+                
+            </div>
+    
+            <!-- Button -->
+            <button class="getStartedBtn tracking-wider text-lg max-xl:text-lg max-lg:text-sm py-2 px-4 max-[500px]:border-[1px] max-[500px]:text-[12px] mt-6 mb-20">
+                GET STARTED
+            </button>
+        </div>
+    </main>
+
+    
+
+    <h1 id="services"
+        class=" text-5xl max-xl:text-4xl font-extrabold leading-none tracking-wider text-gray-100 mb-16 max-lg:my-12 max-[800px]:text-3xl max-sm:my-6">
+        Our Services</h1>
+    <main class="services w-[100%] flex flex-wrap justify-between mx-auto gap-y-12 px-10 max-[500px]:px-4">
+        <div class="flex flex-wrap justify-center gap-4 w-full">
+            <!-- Card 1 -->
+            <div
+                class="cursor-pointer card hover:bg-gray-100 transition-all duration-800 ease-in-out w-[32%] max-[1312px]:w-[90%] max-lg:w-[100%] min-w-[400px] max-[500px]:min-w-[200px] border-4 rounded-lg shadow bg-gray-800 dark:border-gray-700 overflow-hidden pb-4">
+                <a href="#">
+                    <img class="bg-gray-900 w-full h-[300px] object-cover" src="WEBDESIGN.jpeg" alt="Web Design" />
+                </a>
+                <div class="p-5">
+                    <a class="flex items-center" href="#">
+                        <img class="cardimage w-[60px] mr-4 max-[1500px]:w-[45px]" src="image (10).png" alt="Card Icon">
+                        <h5
+                            class="cardheading text-xl font-bold tracking-wider text-gray-900 dark:text-white my-4">
+                            WEB DESIGN
+                        </h5>
+                    </a>
+                    <p
+                        class="cardpara leading-8 max-[500px]:leading-7 text-xl font-normal text-gray-700 dark:text-gray-400">
+                        Our web design services bring your vision to life with modern, user-friendly designs that captivate and engage your audience. From responsive layouts to seamless navigation, we ensure your website not only looks stunning but also delivers an exceptional user experience. Ready to elevate your online presence and leave a lasting impression?
+                    </p>
+                </div>
+                <button
+                    class="hover:text-white hover:bg-black bg-gray-100 text-black mx-5 px-4 py-2 rounded-lg font-semibold tracking-wide transition duration-500 text-md">
+                    Learn More
+                </button>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+                class="cursor-pointer card hover:bg-gray-100 transition-all duration-800 ease-in-out w-[32%] max-[1312px]:w-[90%] max-lg:w-[100%] min-w-[400px] max-[500px]:min-w-[200px] border-4 rounded-lg shadow bg-gray-800 dark:border-gray-700 overflow-hidden pb-4">
+                <a href="#">
+                    <img class="bg-gray-900 w-full h-[300px] object-cover" src="COPYWRITING.jpeg" alt="Copywriting" />
+                </a>
+                <div class="p-5">
+                    <a class="flex items-center" href="#">
+                        <img class="cardimage w-[60px] mr-4 max-[1500px]:w-[45px]" src="image (12).png" alt="Card Icon">
+                        <h5
+                            class="cardheading text-xl font-bold tracking-wider text-gray-900 dark:text-white my-4">
+                            COPYWRITING
+                        </h5>
+                    </a>
+                    <p
+                        class="cardpara leading-8 max-[500px]:leading-7 text-xl font-normal text-gray-700 dark:text-gray-400">
+                        Boost your email campaigns with attention-grabbing subject lines, compelling copy, and clear calls to action. Our expertly crafted email content drives engagement, enhances click-through rates, and converts leads into loyal customers. Ready to captivate your audience?
+                    </p>
+                </div>
+                <button
+                    class="hover:text-white hover:bg-black bg-gray-100 text-black mx-5 px-4 py-2 rounded-lg font-semibold tracking-wide transition duration-500 text-md">
+                    Learn More
+                </button>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+                class="cursor-pointer card hover:bg-gray-100 transition-all duration-800 ease-in-out w-[32%] max-[1312px]:w-[90%] max-lg:w-[100%] min-w-[400px] max-[500px]:min-w-[200px] border-4 rounded-lg shadow bg-gray-800 dark:border-gray-700 overflow-hidden pb-4">
+                <a href="#">
+                    <img class="bg-gray-900 w-full h-[300px] object-cover" src="AIAUTOMATION.jpeg"
+                        alt="AI Automation" />
+                </a>
+                <div class="p-5">
+                    <a class="flex items-center" href="#">
+                        <img class="cardimage w-[65px] mr-4 max-[1500px]:w-[45px]" src="image (5).png" alt="Card Icon">
+                        <h5
+                            class="cardheading text-xl font-bold tracking-wider text-gray-900 dark:text-white my-4">
+                            AI AUTOMATION
+                        </h5>
+                    </a>
+                    <p
+                        class="cardpara leading-8 max-[500px]:leading-7 text-xl font-normal text-gray-700 dark:text-gray-400">
+                        Our AI automation services streamline your business operations by integrating advanced features like automated appointment setting, CRM management, lead capture bots, and AI voice calling. Enhance efficiency further with seamless social media automation, driving engagement and improving customer interactions.
+                    </p>
+                </div>
+                <button
+                    class="hover:text-white hover:bg-black bg-gray-100 text-black mx-5 px-4 py-2 rounded-lg font-semibold tracking-wide transition duration-500 text-md">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <h1 id="videos" class="text-5xl max-xl:text-4xl font-extrabold leading-none tracking-wider text-gray-100 my-10 max-lg:my-12 max-[800px]:text-3xl max-md:my-6">
+        Videos
+    </h1>
+    <div class="flex items-center justify-between w-[83%] max-xl:w-[95%] mx-auto relative gap-x-8 max-sm:gap-x-4">
+        <!-- Left Arrow -->
+        <button id="scrollLeft" 
+                class="bg-gray-800 text-white p-2 rounded-full z-10 opacity-50 border-4 border-gray-500" 
+                aria-label="Scroll Left" 
+                disabled>
+            <i class="bx bx-chevron-left text-3xl"></i>
+        </button>
+    
+        <!-- Videos -->
+        <div class="video-container w-full overflow-hidden">
+            <main class="videoList flex gap-x-8 overflow-x-auto scroll-smooth w-full py-4">
+                <video 
+                    src="/1.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+                <video 
+                    src="/2.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+                <video 
+                    src="/3.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+                <video 
+                    src="/4.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+                <video 
+                    src="/5.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+                <video 
+                    src="/6.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+                <video 
+                    src="/7.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+                <video 
+                    src="/8.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+                <video 
+                    src="/9.mp4"
+                    class="border-4 border-gray-700 rounded-xl lazy-video"
+                    width="300px">
+                </video>
+            </main>
+        </div>
+        
+    
+        <!-- Right Arrow -->
+        <button id="scrollRight" 
+                class="bg-gray-800 text-white p-2 rounded-full z-10 border-4 border-gray-500" 
+                aria-label="Scroll Right">
+            <i class="bx bx-chevron-right text-3xl"></i>
+        </button>
+    </div>
+    
+
+
+    <h1 id="aboutus"
+        class=" text-5xl max-xl:text-4xl font-extrabold leading-none tracking-wider text-gray-100 my-20 max-xl:my-12 max-[800px]:text-3xl max-sm:my-6">
+        About Us
+    </h1>
+    <main class="aboutus w-[100%] flex-col justify-between items-center mx-auto gap-y-12 px-20 max-[500px]:px-5 max-md:px-10">
+        <p
+            class=" text-xl text-center  font-normal text-gray-200 mb-4 tracking-wider leading-8 max-xl:text-lg">
+            At <b class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 ">Nexa AI
+                Automation</b>, we are a team of skilled professionals dedicated to providing top-tier services. We are
+            passionate about bringing fresh perspectives to the world through AI-powered business solutions. Our goal is
+            simple: to provide cutting-edge automation services that make your business smarter, faster, and more
+            efficient.</p>
+    </main>
+    <h1 class=" text-5xl font-extrabold leading-none tracking-wider text-gray-100 my-20 max-xl:text-4xl
+    max-xl:my-12 max-[800px]:text-3xl max-sm:my-6">Our Team
+    </h1>
+    <main
+        class="ourteam w-[100%] flex justify-center items-center mx-auto gap-x-12 max-xl:gap-x-4 px-12 max-[500px]:px-0 max-lg:px-4 max-[940px]:flex-col max-[940px]:gap-y-6">
+        <!-- card1 -->
+        <!-- card1 -->
+        <!-- card1 -->
+        <div
+            class="container border-[#374151] border-4 rounded-xl max-[940px]:w-[90%] w-[33%] bg-black shadow-lg transform duration-200 easy-in-out z-10">
+
+
+            <div class=" h-32 max-[500px]:h-28 overflow-hidden rounded-xl">
+                <img class="w-full"
+                    src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                    alt="" />
+            </div>
+            <div class="flex justify-center px-5  -mt-12">
+                <img class="h-32 w-32 max-[500px]:h-28 max-[500px]:w-28 bg-white p-2 max-[500px]:p-1 rounded-full   "
+                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                    alt="" />
+
+            </div>
+            <div class=" ">
+                <div class="text-center px-14 flex flex-col pt-4 pb-12 max-xl:p-6">
+                    <h2 class="text-gray-100 text-2xl font-semibold tracking-wide mt-2 max-lg:text-xl">Nikhil Mittal
+                    </h2>
+                    <p class="mt-4 text-gray-400 text-xl max-lg:text-lg">Lorem Ipsum is simply dummy text of the
+                        printing and
+                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                        1500s, </p>
+                </div>
+
+            </div>
+        </div>
+        <!-- card2 -->
+        <!-- card2 -->
+        <!-- card2 -->
+        <div
+            class="container border-[#374151] border-4 rounded-xl max-[940px]:w-[90%] w-[33%]   bg-black  shadow-lg    transform   duration-200 easy-in-out">
+
+            <div class=" h-32 max-[500px]:h-28 overflow-hidden rounded-xl">
+                <img class="w-full"
+                    src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                    alt="" />
+            </div>
+            <div class="flex justify-center px-5  -mt-12">
+                <img class="h-32 w-32 max-[500px]:h-28 max-[500px]:w-28 bg-white p-2 max-[500px]:p-1 rounded-full   "
+                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                    alt="" />
+
+            </div>
+            <div class=" ">
+                <div class="text-center px-14 flex flex-col pt-4 pb-12 max-xl:p-6">
+                    <h2 class="text-gray-100 text-2xl font-semibold tracking-wide mt-2 max-lg:text-xl">Nikhil Mittal
+                    </h2>
+                    <p class="mt-4 text-gray-400 text-xl max-lg:text-lg">Lorem Ipsum is simply dummy text of the
+                        printing and
+                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                        1500s, </p>
+                </div>
+
+            </div>
+        </div>
+        <div
+            class="container border-[#374151] border-4 rounded-xl  max-[940px]:w-[90%] w-[33%]  bg-black  shadow-lg    transform   duration-200 easy-in-out">
+
+            <div class=" h-32 max-[500px]:h-28 overflow-hidden rounded-xl">
+                <img class="w-full"
+                    src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                    alt="" />
+            </div>
+            <div class="flex justify-center px-5  -mt-12">
+                <img class="h-32 w-32 max-[500px]:h-28 max-[500px]:w-28 bg-white p-2 max-[500px]:p-1 rounded-full   "
+                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                    alt="" />
+
+            </div>
+            <div class=" ">
+                <div class="text-center px-14 flex flex-col pt-4 pb-12 max-xl:p-6">
+                    <h2 class="text-gray-100 text-2xl font-semibold tracking-wide mt-2 max-lg:text-xl">Nikhil Mittal
+                    </h2>
+                    <p class="mt-4 text-gray-400 text-xl max-lg:text-lg">Lorem Ipsum is simply dummy text of the
+                        printing and
+                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                        1500s, </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <main class="p-5 max-[500px]:p-0 bg-light-blue">
+        <div class="flex justify-center items-start my-2">
+            <div class="w-[70%] max-2xl:w-[95%]">
+                <h1 class=" text-5xl font-extrabold leading-none tracking-wider text-center text-gray-100 my-20 max-xl:text-4xl max-lg:text-3xl
+                max-xl:my-12 max-[800px]:text-3xl max-sm:my-6 ">
+                    Frequently Asked Questions
+                </h1>
+                <ul class="flex flex-col">
+                    <li class="my-2 shadow-lg border-2 max-[500px]:border-[1px] border-cyan-400 flex-col justify-center items-center p-4 max-md:p-2 rounded-xl bg-black bg-opacity-70"
+                        x-data="accordion(1)">
+                        <h2 @click="handleClick()"
+                            class="flex flex-row justify-between items-center font-semibold p-3 max-[500px]:p-2 cursor-pointer gap-x-3">
+                            <span
+                                class="max-lg:text-lg max-md:text-sm text-xl font-normal text-gray-300 font-semibold tracking-wider leading-10">What
+                                is AI Automation and how can it benefit my business?</span>
+                            <svg :class="handleRotate()"
+                                class="fill-current text-cyan-400 h-6 w-6 transform transition-transform duration-500"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10">
+                                </path>
+                            </svg>
+                        </h2>
+                        <div x-ref="tab" :style="handleToggle()"
+                            class="border-l-4 border-cyan-400 overflow-hidden max-h-0 duration-500 transition-all">
+                            <p class="p-3 text-gray-300 text-xl leading-8 tracking-wide">
+                                AI automation involves using artificial intelligence to streamline business processes,
+                                increase efficiency, and reduce manual workload. It can automate tasks such as customer
+                                interactions, lead capturing, email campaigns, and more, allowing businesses to focus on
+                                growth and strategy.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="my-2 shadow-lg border-2 max-[500px]:border-[1px] border-cyan-400 flex-col justify-center items-center p-4 max-md:p-2 rounded-xl bg-black bg-opacity-70"
+                        x-data="accordion(2)">
+                        <h2 @click="handleClick()"
+                            class="flex flex-row justify-between items-center font-semibold p-3 max-[500px]:p-2 cursor-pointer gap-x-3">
+                            <span
+                                class="max-lg:text-lg max-md:text-sm text-xl font-normal text-gray-300 font-semibold tracking-wider leading-10">How
+                                do I know if AI automation is right for my business?</span>
+                            <svg :class="handleRotate()"
+                                class="fill-current text-cyan-400 h-6 w-6 transform transition-transform duration-500"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10">
+                                </path>
+                            </svg>
+                        </h2>
+                        <div x-ref="tab" :style="handleToggle()"
+                            class="border-l-4 border-cyan-400 overflow-hidden max-h-0 duration-500 transition-all">
+                            <p class="p-3 text-gray-300 text-xl leading-8 tracking-wide">
+                                AI automation is suitable for any business looking to improve efficiency, reduce
+                                operational costs, and enhance customer experience. Whether you are a small startup or a
+                                growing company, AI solutions can help scale your operations effectively. Contact us for
+                                a consultation to discuss your specific needs.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="my-2 shadow-lg border-2 max-[500px]:border-[1px] border-cyan-400 flex-col justify-center items-center p-4 max-md:p-2 rounded-xl bg-black bg-opacity-70"
+                        x-data="accordion(3)">
+                        <h2 @click="handleClick()"
+                            class="flex flex-row justify-between items-center font-semibold p-3 max-[500px]:p-2 cursor-pointer gap-x-3">
+                            <span
+                                class="max-lg:text-lg max-md:text-sm text-xl font-normal text-gray-300 font-semibold tracking-wider leading-10">How
+                                secure is my data when using your services?</span>
+                            <svg :class="handleRotate()"
+                                class="fill-current text-cyan-400 h-6 w-6 transform transition-transform duration-500"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10">
+                                </path>
+                            </svg>
+                        </h2>
+                        <div x-ref="tab" :style="handleToggle()"
+                            class="border-l-4 border-cyan-400 overflow-hidden max-h-0 duration-500 transition-all">
+                            <p class="p-3 text-gray-300 text-xl leading-8 tracking-wide">
+                                We prioritize the security of your data and ensure that all AI solutions comply with
+                                industry standards for data protection. We implement encryption, secure APIs, and
+                                regular security audits to safeguard sensitive information.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="my-2 shadow-lg border-2 max-[500px]:border-[1px] border-cyan-400 flex-col justify-center items-center p-4 max-md:p-2 rounded-xl bg-black bg-opacity-70"
+                        x-data="accordion(4)">
+                        <h2 @click="handleClick()"
+                            class="flex flex-row justify-between items-center font-semibold p-3 max-[500px]:p-2 cursor-pointer gap-x-3">
+                            <span
+                                class="max-lg:text-lg max-md:text-sm text-xl font-normal text-gray-300 font-semibold tracking-wider leading-10">What
+                                kind of businesses can benefit from your services?</span>
+                            <svg :class="handleRotate()"
+                                class="fill-current text-cyan-400 h-6 w-6 transform transition-transform duration-500"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10">
+                                </path>
+                            </svg>
+                        </h2>
+                        <div x-ref="tab" :style="handleToggle()"
+                            class="border-l-4 border-cyan-400 overflow-hidden max-h-0 duration-500 transition-all">
+                            <p class="p-3 text-gray-300 text-xl leading-8 tracking-wide">
+                                Our AI automation services are ideal for businesses in various industries, including
+                                e-commerce, marketing, customer support, agriculture, and more. Whether you’re a startup
+                                or an established business, we offer tailored solutions to meet your specific needs.
+
+                            </p>
+                        </div>
+                    </li>
+                    <li class="my-2 shadow-lg border-2 max-[500px]:border-[1px] border-cyan-400 flex-col justify-center items-center p-4 max-md:p-2 rounded-xl bg-black bg-opacity-70"
+                        x-data="accordion(5)">
+                        <h2 @click="handleClick()"
+                            class="flex flex-row justify-between items-center font-semibold p-3 max-[500px]:p-2 cursor-pointer gap-x-3">
+                            <span
+                                class="max-lg:text-lg max-md:text-sm text-xl font-normal text-gray-300 font-semibold tracking-wider leading-10">Do
+                                I need to have technical knowledge to use AI automation?</span>
+                            <svg :class="handleRotate()"
+                                class="fill-current text-cyan-400 h-6 w-6 transform transition-transform duration-500"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10">
+                                </path>
+                            </svg>
+                        </h2>
+                        <div x-ref="tab" :style="handleToggle()"
+                            class="border-l-4 border-cyan-400 overflow-hidden max-h-0 duration-500 transition-all">
+                            <p class="p-3 text-gray-300 text-xl leading-8 tracking-wide">
+                                No, our AI tools and automation solutions are designed to be user-friendly and easy to
+                                integrate. We handle the technical setup, and our team provides full support to ensure a
+                                smooth transition for your business.
+
+                            </p>
+                        </div>
+                    </li>
+                    <li class="my-2 shadow-lg border-2 max-[500px]:border-[1px] border-cyan-400 flex-col justify-center items-center p-4 max-md:p-2 rounded-xl bg-black bg-opacity-70"
+                        x-data="accordion(6)">
+                        <h2 @click="handleClick()"
+                            class="flex flex-row justify-between items-center font-semibold p-3 max-[500px]:p-2 cursor-pointer gap-x-3">
+                            <span
+                                class="max-lg:text-lg max-md:text-sm text-xl font-normal text-gray-300 font-semibold tracking-wider leading-10">
+                                How do I get started with Nexa AI Automation?</span>
+                            <svg :class="handleRotate()"
+                                class="fill-current text-cyan-400 h-6 w-6 transform transition-transform duration-500"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10">
+                                </path>
+                            </svg>
+                        </h2>
+                        <div x-ref="tab" :style="handleToggle()"
+                            class="border-l-4 border-cyan-400 overflow-hidden max-h-0 duration-500 transition-all">
+                            <p class="p-3 text-gray-300 text-xl leading-8 tracking-wide">
+                                Getting started is simple! Just reach out to us through our contact form, and we’ll
+                                schedule a free consultation to discuss your needs. From there, we’ll recommend the best
+                                automation solutions tailored to your business goals.
+
+                            </p>
+                        </div>
+                    </li>
+                    <li class="my-2 shadow-lg border-2 max-[500px]:border-[1px] border-cyan-400 flex-col justify-center items-center p-4 max-md:p-2 rounded-xl bg-black bg-opacity-70"
+                        x-data="accordion(7)">
+                        <h2 @click="handleClick()"
+                            class="flex flex-row justify-between items-center font-semibold p-3 max-[500px]:p-2 cursor-pointer gap-x-3">
+                            <span
+                                class="max-lg:text-lg max-md:text-sm text-xl font-normal text-gray-300 font-semibold tracking-wider leading-10">Still
+                                have questions?</span>
+                            <svg :class="handleRotate()"
+                                class="fill-current text-cyan-400 h-6 w-6 transform transition-transform duration-500"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10">
+                                </path>
+                            </svg>
+                        </h2>
+                        <div x-ref="tab" :style="handleToggle()"
+                            class="border-l-4 border-cyan-400 overflow-hidden max-h-0 duration-500 transition-all">
+                            <p class="p-3 text-gray-300 text-xl leading-8 tracking-wide">
+                                Jagjit bot is here
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <div class="mb-10">
+
+        <span id="termsLink" class="text-lg max-md:text-sm font-normal leading-none tracking-wider text-gray-100 cursor-pointer hover:text-gray-300 hover:underline">
+            Terms and conditions</span>
+        <span class="text-white mx-1 cursor-default">•</span>
+        <span id="termsLink2" class="text-lg max-md:text-sm font-normal leading-none tracking-wider text-gray-100 cursor-pointer hover:text-gray-300 hover:underline">
+            Privacy Policy
+        </span>
+
+    </div>
+    <!-- terms and conditions and privacy Policy -->
+      <script>
+        document.getElementById("termsLink").addEventListener("click", function () {
+  // Redirect to terms.html
+  window.location.href = "/NexaAI/terms.html"; // Update the path if terms.html is in a subfolder
+});
+        document.getElementById("termsLink2").addEventListener("click", function () {
+  // Redirect to terms.html
+  window.location.href = "/NexaAI/privacy.html"; // Update the path if terms.html is in a subfolder
+});
+
+      </script>
+
+    <!-- accordion script -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('accordion', {
+                tab: 0
+            });
+
+            Alpine.data('accordion', (idx) => ({
+                init() {
+                    this.idx = idx;
+                },
+                idx: -1,
+                handleClick() {
+                    this.$store.accordion.tab = this.$store.accordion.tab === this.idx ? 0 : this.idx;
+                },
+                handleRotate() {
+                    return this.$store.accordion.tab === this.idx ? 'rotate-180' : '';
+                },
+                handleToggle() {
+                    return this.$store.accordion.tab === this.idx ? `max-height: ${this.$refs.tab.scrollHeight}px` : '';
+                }
+            }));
+        })
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".nav-button");
+    const sections = {
+        home: document.getElementById("home"),
+        services: document.getElementById("services"),
+        aboutus: document.getElementById("aboutus"),
+    };
+
+    let isManualScroll = false; // Flag for button click
+    let scrollTimeout; // Timer to reset manual scroll flag
+
+    // Function to activate button
+    const activateButton = (target) => {
+        document.querySelector(".nav-button.active")?.classList.remove("active");
+        const buttonToActivate = [...buttons].find((btn) => btn.dataset.target === target);
+        buttonToActivate?.classList.add("active");
+    };
+
+    // Function to determine active section during scroll
+    const determineActiveSection = () => {
+        if (isManualScroll) return; // Ignore during manual scroll
+
+        const scrollPosition = window.scrollY + window.innerHeight / 2; // Midpoint of viewport
+
+        Object.values(sections).forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                activateButton(section.id);
+            }
+        });
+    };
+
+    // Intersection Observer Options
+    const observerOptions = {
+        root: null, // Observe relative to the viewport
+        threshold: 0.5, // Trigger when 50% of section is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        if (isManualScroll) return; // Ignore during manual scroll
+
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                activateButton(entry.target.id);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections
+    Object.values(sections).forEach((section) => observer.observe(section));
+
+    // Scroll event fallback
+    window.addEventListener("scroll", determineActiveSection);
+
+    // Click event for buttons
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            document.querySelector(".nav-button.active")?.classList.remove("active");
+            button.classList.add("active");
+            const targetId = button.dataset.target;
+            const targetDiv = document.getElementById(targetId);
+
+            if (targetDiv) {
+                let offset;
+                const screenWidth = window.innerWidth;
+
+                // Dynamically set offset for different screen sizes
+                if (screenWidth < 600) {
+                    offset = -150;
+                } else {
+                    offset = -165;
+                }
+
+                const targetPosition = targetDiv.getBoundingClientRect().top + window.scrollY + offset;
+
+                isManualScroll = true; // Mark as manual scroll
+                clearTimeout(scrollTimeout); // Clear previous timeout
+                scrollTimeout = setTimeout(() => (isManualScroll = false), 1000); // Reset flag after 1 second
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth",
+                });
+            }
+        });
+    });
+});
+
+    </script>
+    
+    <!-- video scrollhorizontal script -->
+    <script>
+        const scrollLeftBtn = document.getElementById("scrollLeft");
+const scrollRightBtn = document.getElementById("scrollRight");
+const videoList = document.querySelector(".videoList");
+
+const scrollAmount = 330; // Scroll amount per click
+
+// Update button states
+function updateButtonStates() {
+    const maxScrollLeft = videoList.scrollWidth - videoList.clientWidth;
+    scrollLeftBtn.disabled = videoList.scrollLeft <= 0;
+    scrollRightBtn.disabled = videoList.scrollLeft >= maxScrollLeft;
+
+    // Update visual feedback for buttons
+    scrollLeftBtn.classList.toggle("opacity-50", scrollLeftBtn.disabled);
+    scrollRightBtn.classList.toggle("opacity-50", scrollRightBtn.disabled);
+}
+
+// Scroll event listeners for buttons
+scrollLeftBtn.addEventListener("click", () => {
+    videoList.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    setTimeout(updateButtonStates, 300); // Delay for smooth scroll sync
+});
+
+scrollRightBtn.addEventListener("click", () => {
+    videoList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    setTimeout(updateButtonStates, 300);
+});
+
+// Enable touch-based horizontal scrolling
+let isTouchScrolling = false;
+let startX, scrollLeft;
+
+videoList.addEventListener("mousedown", (e) => {
+    isTouchScrolling = true;
+    startX = e.pageX - videoList.offsetLeft;
+    scrollLeft = videoList.scrollLeft;
+});
+videoList.addEventListener("touchstart", (e) => {
+    isTouchScrolling = true;
+    startX = e.touches[0].pageX - videoList.offsetLeft;
+    scrollLeft = videoList.scrollLeft;
+});
+
+videoList.addEventListener("mousemove", (e) => {
+    if (!isTouchScrolling) return;
+    const x = e.pageX - videoList.offsetLeft;
+    const walk = (x - startX) * 1.5; // Scroll sensitivity
+    videoList.scrollLeft = scrollLeft - walk;
+});
+videoList.addEventListener("touchmove", (e) => {
+    if (!isTouchScrolling) return;
+    const x = e.touches[0].pageX - videoList.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    videoList.scrollLeft = scrollLeft - walk;
+});
+
+videoList.addEventListener("mouseup", () => (isTouchScrolling = false));
+videoList.addEventListener("mouseleave", () => (isTouchScrolling = false));
+videoList.addEventListener("touchend", () => (isTouchScrolling = false));
+
+// Lazy loading and controls toggle for videos
+document.querySelectorAll('.lazy-video').forEach((video) => {
+    video.addEventListener('click', () => {
+        if (!video.hasAttribute('controls')) {
+            video.setAttribute('controls', true);
+            video.play().catch((error) => {
+                console.error('Video play failed:', error);
+            });
+        }
+    });
+
+    video.addEventListener('pause', () => {
+        video.removeAttribute('controls');
+    });
+});
+
+// Initial state update for buttons
+updateButtonStates();
+
+    </script>
+
+
+<script>
+    // Get elements
+    const video = document.getElementById('video');
+    
+
+    // Show video controls on hover
+    video.addEventListener('mouseenter', () => {
+        video.controls = true;
+    });
+
+    video.addEventListener('mouseleave', () => {
+        video.controls = false;
+    });
+
+    // Intersection Observer for scrolling functionality
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        },
+        { threshold: 0.5 } // Trigger when 50% of the video is visible
+    );
+
+    // Observe the video container
+    observer.observe(document.querySelector('.video-container'));
+</script>
+</body>
+</html>
