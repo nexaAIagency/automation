@@ -559,21 +559,26 @@
                 // Prevent default browser behavior
                 event.preventDefault();
         
-                // Pause all other videos
+                // Pause all other videos with a slight delay
                 document.querySelectorAll("video").forEach((video) => {
                     if (video !== videoElement) {
-                        video.pause();
+                        setTimeout(() => {
+                            video.pause();
+                        }, 100); // Adjust the timeout as needed
                     }
                 });
         
-                // Toggle play/pause for the clicked video
+                // Try playing the clicked video, with error handling
                 if (videoElement.paused) {
-                    videoElement.play();
+                    videoElement.play().catch(error => {
+                        console.error("Error playing video:", error);
+                    });
                 } else {
                     videoElement.pause();
                 }
             }
         </script>
+        
         
 
         <!-- Right Arrow -->
