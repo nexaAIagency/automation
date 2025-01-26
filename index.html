@@ -313,14 +313,13 @@
                 <video
                 poster="videoImage.png"
                     id="video"
-                    src="./finalWoOutro.mp4"
+                    src="finalWoOutro.mp4"
                     class="w-full h-full object-contain"
                     muted="false"
                     loop
-                    preload="metadata"
+                    preload="none"
                 ></video>
             
-                
             </div>
     
             <!-- Button -->
@@ -330,6 +329,38 @@
         </div>
     </main>
 
+    <!-- big video script -->
+    <script>
+        // Get elements
+        const video = document.getElementById('video');
+        
+    
+        // Show video controls on hover
+        video.addEventListener('mouseenter', () => {
+            video.controls = true;
+        });
+    
+        video.addEventListener('mouseleave', () => {
+            video.controls = false;
+        });
+    
+        // Intersection Observer for scrolling functionality
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+            },
+            { threshold: 0.5 } // Trigger when 50% of the video is visible
+        );
+    
+        // Observe the video container
+        observer.observe(document.querySelector('.video-container'));
+        </script>
     
 
     <h1 id="services"
@@ -431,54 +462,120 @@
         <div class="video-container w-full overflow-hidden">
             <main class="videoList flex gap-x-8 overflow-x-auto scroll-smooth w-full py-4">
                 <video 
-                    src="./1.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="1.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <video 
-                    src="./2.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="2.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <video 
-                    src="./3.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="3.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <video 
-                    src="./4.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="4.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <video 
-                    src="./5.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="5.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <video 
-                    src="./6.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="5.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="after 5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <video 
-                    src="./7.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="6.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="6.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <video 
-                    src="./8.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="7.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="7.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <video 
-                    src="./9.mp4"
-                    class="border-4 border-gray-700 rounded-xl lazy-video"
-                    width="300px">
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="8.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="8.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video 
+                    class="w-[300px] border-4 border-gray-700 rounded-xl cursor-pointer"
+                    preload="none"
+                    loading="lazy"
+                    poster="9.jpg"
+                    onclick="togglePlayPause(event, this)">
+                    <source src="9.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
             </main>
         </div>
         
-    
+        <script>
+            function togglePlayPause(event, videoElement) {
+                // Prevent default browser behavior
+                event.preventDefault();
+        
+                // Pause all other videos
+                document.querySelectorAll("video").forEach((video) => {
+                    if (video !== videoElement) {
+                        video.pause();
+                    }
+                });
+        
+                // Toggle play/pause for the clicked video
+                if (videoElement.paused) {
+                    videoElement.play();
+                } else {
+                    videoElement.pause();
+                }
+            }
+        </script>
+        
+
         <!-- Right Arrow -->
         <button id="scrollRight" 
                 class="bg-gray-800 text-white p-2 rounded-full z-10 border-4 border-gray-500" 
@@ -486,8 +583,6 @@
             <i class="bx bx-chevron-right text-3xl"></i>
         </button>
     </div>
-    
-
 
     <h1 id="aboutus"
         class=" text-5xl max-xl:text-4xl font-extrabold leading-none tracking-wider text-gray-100 my-20 max-xl:my-12 max-[800px]:text-3xl max-sm:my-6">
@@ -505,6 +600,7 @@
     <h1 class=" text-5xl font-extrabold leading-none tracking-wider text-gray-100 my-20 max-xl:text-4xl
     max-xl:my-12 max-[800px]:text-3xl max-sm:my-6">Our Team
     </h1>
+    <!-- our Team -->
     <main
         class="ourteam w-[100%] flex justify-center items-center mx-auto gap-x-12 max-xl:gap-x-4 px-12 max-[500px]:px-0 max-lg:px-4 max-[940px]:flex-col max-[940px]:gap-y-6">
         <!-- card1 -->
@@ -593,7 +689,7 @@
             </div>
         </div>
     </main>
-
+<!-- Frequently Asked Questions -->
     <main class="p-5 max-[500px]:p-0 bg-light-blue">
         <div class="flex justify-center items-start my-2">
             <div class="w-[70%] max-2xl:w-[95%]">
@@ -788,8 +884,9 @@
         </span>
 
     </div>
+
     <!-- terms and conditions and privacy Policy -->
-      <script>
+    <script>
         document.getElementById("termsLink").addEventListener("click", function () {
   // Redirect to terms.html
   window.location.href = "/NexaAI/terms.html"; // Update the path if terms.html is in a subfolder
@@ -799,7 +896,9 @@
   window.location.href = "/NexaAI/privacy.html"; // Update the path if terms.html is in a subfolder
 });
 
-      </script>
+    </script>
+
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
 
     <!-- accordion script -->
     <script>
@@ -825,8 +924,8 @@
             }));
         })
     </script>
-    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
-    
+
+    <!-- scroll functionality home services aboutus -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".nav-button");
@@ -922,118 +1021,33 @@
     
     <!-- video scrollhorizontal script -->
     <script>
+        const videoList = document.querySelector(".videoList");
+    
+        // Scroll functionality (unchanged)
         const scrollLeftBtn = document.getElementById("scrollLeft");
-const scrollRightBtn = document.getElementById("scrollRight");
-const videoList = document.querySelector(".videoList");
-
-const scrollAmount = 330; // Scroll amount per click
-
-// Update button states
-function updateButtonStates() {
-    const maxScrollLeft = videoList.scrollWidth - videoList.clientWidth;
-    scrollLeftBtn.disabled = videoList.scrollLeft <= 0;
-    scrollRightBtn.disabled = videoList.scrollLeft >= maxScrollLeft;
-
-    // Update visual feedback for buttons
-    scrollLeftBtn.classList.toggle("opacity-50", scrollLeftBtn.disabled);
-    scrollRightBtn.classList.toggle("opacity-50", scrollRightBtn.disabled);
-}
-
-// Scroll event listeners for buttons
-scrollLeftBtn.addEventListener("click", () => {
-    videoList.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    setTimeout(updateButtonStates, 300); // Delay for smooth scroll sync
-});
-
-scrollRightBtn.addEventListener("click", () => {
-    videoList.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    setTimeout(updateButtonStates, 300);
-});
-
-// Enable touch-based horizontal scrolling
-let isTouchScrolling = false;
-let startX, scrollLeft;
-
-videoList.addEventListener("mousedown", (e) => {
-    isTouchScrolling = true;
-    startX = e.pageX - videoList.offsetLeft;
-    scrollLeft = videoList.scrollLeft;
-});
-videoList.addEventListener("touchstart", (e) => {
-    isTouchScrolling = true;
-    startX = e.touches[0].pageX - videoList.offsetLeft;
-    scrollLeft = videoList.scrollLeft;
-});
-
-videoList.addEventListener("mousemove", (e) => {
-    if (!isTouchScrolling) return;
-    const x = e.pageX - videoList.offsetLeft;
-    const walk = (x - startX) * 1.5; // Scroll sensitivity
-    videoList.scrollLeft = scrollLeft - walk;
-});
-videoList.addEventListener("touchmove", (e) => {
-    if (!isTouchScrolling) return;
-    const x = e.touches[0].pageX - videoList.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    videoList.scrollLeft = scrollLeft - walk;
-});
-
-videoList.addEventListener("mouseup", () => (isTouchScrolling = false));
-videoList.addEventListener("mouseleave", () => (isTouchScrolling = false));
-videoList.addEventListener("touchend", () => (isTouchScrolling = false));
-
-// Lazy loading and controls toggle for videos
-document.querySelectorAll('.lazy-video').forEach((video) => {
-    video.addEventListener('click', () => {
-        if (!video.hasAttribute('controls')) {
-            video.setAttribute('controls', true);
-            video.play().catch((error) => {
-                console.error('Video play failed:', error);
-            });
+        const scrollRightBtn = document.getElementById("scrollRight");
+        const scrollAmount = 330; // Scroll amount per click
+    
+        function updateButtonStates() {
+            const maxScrollLeft = videoList.scrollWidth - videoList.clientWidth;
+            scrollLeftBtn.disabled = videoList.scrollLeft <= 0;
+            scrollRightBtn.disabled = videoList.scrollLeft >= maxScrollLeft;
+            scrollLeftBtn.classList.toggle("opacity-50", scrollLeftBtn.disabled);
+            scrollRightBtn.classList.toggle("opacity-50", scrollRightBtn.disabled);
         }
-    });
-
-    video.addEventListener('pause', () => {
-        video.removeAttribute('controls');
-    });
-});
-
-// Initial state update for buttons
-updateButtonStates();
-
+    
+        scrollLeftBtn.addEventListener("click", () => {
+            videoList.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+            setTimeout(updateButtonStates, 300);
+        });
+    
+        scrollRightBtn.addEventListener("click", () => {
+            videoList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            setTimeout(updateButtonStates, 300);
+        });
+    
+        updateButtonStates();
     </script>
 
-
-<script>
-    // Get elements
-    const video = document.getElementById('video');
-    
-
-    // Show video controls on hover
-    video.addEventListener('mouseenter', () => {
-        video.controls = true;
-    });
-
-    video.addEventListener('mouseleave', () => {
-        video.controls = false;
-    });
-
-    // Intersection Observer for scrolling functionality
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            });
-        },
-        { threshold: 0.5 } // Trigger when 50% of the video is visible
-    );
-
-    // Observe the video container
-    observer.observe(document.querySelector('.video-container'));
-</script>
 </body>
 </html>
