@@ -323,9 +323,11 @@
             </div>
     
             <!-- Button -->
+             <a href="https://wa.me/12692864097">
             <button class="getStartedBtn tracking-wider text-lg max-xl:text-lg max-lg:text-sm py-2 px-4 max-[500px]:border-[1px] max-[500px]:text-[12px] mt-6 mb-20">
                 GET STARTED
             </button>
+        </a>
         </div>
     </main>
 
@@ -447,7 +449,7 @@
     </main>
     
     <h1 id="videos" class="text-5xl max-xl:text-4xl font-extrabold leading-none tracking-wider text-gray-100 my-10 max-lg:my-12 max-[800px]:text-3xl max-md:my-6">
-        Videos
+        Why Integrate AI ?
     </h1>
     <div class="flex items-center justify-between w-[83%] max-xl:w-[95%] mx-auto relative gap-x-8 max-sm:gap-x-4">
         <!-- Left Arrow -->
@@ -1054,5 +1056,39 @@
         updateButtonStates();
     </script>
 
+<div style="width: 0; height: 0;" id="VG_OVERLAY_CONTAINER">
+    <!-- Here is where TIXAE Agents renders the widget. -->
+    <!-- Set render to 'full-width' then adjust the width and height to 500px (for example) to render the chatbot itself without the popup. -->
+</div>
+
+<!-- Remove 'defer' if you want widget to load faster (Will affect website loading) -->
+<script defer>
+    (function() {
+        window.VG_CONFIG = {
+            ID: "6s8ifkh6rcw1ivai", // YOUR AGENT ID
+            region: 'eu', // YOUR ACCOUNT REGION 
+            render: 'bottom-right', // can be 'full-width' or 'bottom-left' or 'bottom-right'
+            stylesheets: [
+                // Base TIXAE Agents CSS
+                "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css",
+                // Add your custom css stylesheets, Can also add relative URL ('/public/your-file.css)
+            ],
+            // THIS IS SUPPOSED TO BE CHANGED OR REMOVED.
+            // user: {
+            //     name: 'John Doe', // User's name
+            //     email: 'johndoe@gmail.com', // User's email
+            //     phone: '+1234567890', // User's phone number
+            // }
+            // Optional user data -- end
+            // **
+            // userID: 'USER_ID', // If you want to use your own user_id
+            // autostart: true, // Whether to autostart the chatbot with the proactive message
+        }
+        var VG_SCRIPT = document.createElement("script");
+        VG_SCRIPT.src = "https://vg-bunny-cdn.b-cdn.net/vg_live_build/vg_bundle.js";
+        VG_SCRIPT.defer = true; // Remove 'defer' if you want widget to load faster (Will affect website loading)
+        document.body.appendChild(VG_SCRIPT);
+    })()
+</script>
 </body>
 </html>
